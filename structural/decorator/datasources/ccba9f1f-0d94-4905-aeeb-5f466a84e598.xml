@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <report_name type="str">Decorator example report name</report_name>
+    <report_subject type="str">Decorator example report subject</report_subject>
+</root>
