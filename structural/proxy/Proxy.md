@@ -1,4 +1,4 @@
-# Facade
+# Proxy
 
 ### When to use the pattern?
 If you need to control access to a certain object. The proxy pattern allows to substitute the original object

@@ -106,11 +106,11 @@ if __name__ == '__main__':
     # client code
 
     image_stock_obj: ConcreteImageStock = ConcreteImageStock()
-    image_id: str = image_stock_obj.upload_image('image'.encode('utf-8'))
+    uploaded_image_id: str = image_stock_obj.upload_image('image'.encode('utf-8'))
 
-    user: User = User('username')
-    image_stock_proxy: ImageStockPermissionProxy = ImageStockPermissionProxy(image_stock_obj, user)
+    user_without_access = User('username')
+    image_stock_proxy = ImageStockPermissionProxy(image_stock_obj, user_without_access)
     try:
-        image_stock_proxy.delete_image(image_id)
+        image_stock_proxy.delete_image(uploaded_image_id)
     except AccessDeniedException as e:
         print(str(e))

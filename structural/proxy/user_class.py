@@ -9,10 +9,10 @@ class User:
     This class represents a user of the "system"
     """
 
-    def __init__(self, username: str):
+    def __init__(self, username: str, role: str = "manager"):
         self.username = username
         self._password = secrets.token_hex()
-        self._role: str = 'manager'
+        self._role: str = role
 
     @property
     def is_admin(self):
