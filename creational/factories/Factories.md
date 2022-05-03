@@ -27,6 +27,7 @@ Then, create a caching service interface `CachingServiceInterface` which will be
 
 
 ## Factory method pattern
+In general, Factory method is an improved simple factory. You can start from a simple factory and evolve into a factory method. 
 In this case, a factory class is responsible for producing object of one type only. 
 _One factory is specialized in creating only one kind of object. The pattern separates the classes into products and classes that create these products._
 The creator class usually has a public method like `create_product()` that creates an object of a particular type. 
