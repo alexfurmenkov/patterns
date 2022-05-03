@@ -39,7 +39,7 @@ The pattern is useful when:
 * you want to separate object creation from its usage (might later evolve into Builder pattern).
 * all objects of a certain hierarchy need to have the same creation method.  
 * each object from the hierarchy requires its own input parameters.
-* you want to allow extension of your code without making changes to the original factory (solution of the problem introduced by simple factory). 
+* you want to allow extension of your code without making changes to the original factory **(solution of the problem introduced by simple factory)**. 
 
 
 ### Example
@@ -52,7 +52,7 @@ Let's assume that each employee has a certain interface (`EmployeeInterface`) wh
 We will have a base departament class with abstract `create_employee()` factory method and all departament classes will be derived from this class.
 Each time when you need to create a new employee and departament types, you just inherit from `BaseDepartament` class, and it gives you a new factory.
 
-If you want to have more convenience in the client code, you can create a class which accepts an employee type and returns the needed instance - `EmployeeFactory`.
+**Not necessary.** If you want to have more convenience in the client code, you can create a class which accepts an employee type and returns the needed instance - `EmployeeFactory`.
 This class should also support adding new employee type to avoid changing the code.
 
 
@@ -67,6 +67,11 @@ Instead of checking the configuration each time you need to send a message to th
 create logger and queue client interfaces (`QueueClientInterface`, `LoggingClientInterface`) and a factory that produces concrete objects. 
 Since you are supporting several cloud services, create a factory interface `FactoryInterface` with `get_queue_client` and `get_logger` methods
 and 2 concreate factories: one for each cloud service.
+
+Overall, abstract factory is some kind of factory of factories. Of course, you can combine creation of AWS and Azure clients
+in one factory class, but:
+* it will be hard to maintain
+* if you need to add a new cloud provider, you will have to change the class. It can cause bugs.
 
 
 ## Factory to use case matrix
