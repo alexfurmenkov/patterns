@@ -21,7 +21,7 @@ class HandlerInterface(ABC):
         """
 
 
-class BaseHandler(HandlerInterface, ABC):
+class BaseHandler(HandlerInterface):
     """
     The basic class from which all concrete handlers
     should be inherited. Defines some common attributes
