@@ -13,4 +13,4 @@ the child class can't exist without the parent and being created during parent c
 **Aggregation** - aggregation also means that instead of subclassing, one class is included into another class. In terms of aggregation, 
 the child class has its own lifecycle.
 
-**Interface** - a set of methods that is implemented by a concrete class in order to make it interchangeable. 
+**Interface** - a description of methods that an object must implement. An interface does not contain implementation. 
