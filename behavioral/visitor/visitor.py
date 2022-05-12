@@ -31,20 +31,23 @@ class SerializationVisitor(SerializationVisitorInterface):
     """
 
     def serialize_user(self, user: DBUserModel) -> str:
-        serialized: dict = {
+        dict_to_serialize: dict = {
             "id": user.id,
             "created_at": user.created_at,
             "username": user.username,
         }
-        return json.dumps(serialized)
+        return self._serialize_dict(dict_to_serialize)
 
     def serialize_post(self, post: DBPostModel) -> str:
-        serialized: dict = {
+        dict_to_serialize: dict = {
             "id": post.id,
             "created_at": post.created_at,
             "description": post.description,
         }
-        return json.dumps(serialized)
+        return self._serialize_dict(dict_to_serialize)
+
+    def _serialize_dict(self, dict_to_serialize: dict) -> str:
+        return json.dumps(dict_to_serialize)
 
 
 class AcceptVisitorInterface(ABC):
