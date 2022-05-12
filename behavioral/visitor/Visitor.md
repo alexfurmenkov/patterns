@@ -11,11 +11,12 @@ having a huge if/else block for handling different types of objects. In this cas
 You have a set of classes that represent DB records (`DBUserModel`, `DBPostModel`) and need to add serialization capabilities.
 You can't change the code of `DBUserModel`, `DBPostModel` because it is pretty stable and also do not want to extend it with unnecessary responsibilities.
 
-What you can do is create a `SerializationVisitor` class that will have a set of methods for serializing each of the records
+What you can do is create a `SerializationVisitor` class. Of course, the class can have one generic method like `serialize` but 
+we can end up having a large if/else block which will define the corresponding serialization logic for different objects. 
+The pattern suggests the following approach: `SerializationVisitor` will have a set of methods for serializing each of the records
 by accepting it: `serialize_user` or `serialize_post`. Then, we will use the double dispatch technique: `DBUserModel`, `DBPostModel` 
 will implement an `AcceptVisitorInterface` with a public method `accept_visitor` that will accept the visitor instance and call the corresponding
-serialization method.
-
+serialization method. Finally, the client code will use model's `accept_visitor` method for serialization.
 
 
 **Advantage of the pattern is that we do not mix responsibilities, follow open/closed principle, and we are able to change the visitor on the fly.**
