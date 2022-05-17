@@ -11,9 +11,9 @@ class House:
         walls: int,
         floors: int,
         windows: int,
-        has_pool: bool = None,
-        has_garage: bool = None,
-        has_gates: bool = None,
+        has_pool: bool,
+        has_garage: bool,
+        has_gates: bool,
         roof_type: str = "flat",
     ):
         self.walls = walls
