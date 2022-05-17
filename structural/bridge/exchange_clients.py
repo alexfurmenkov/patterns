@@ -43,15 +43,17 @@ class BinanceClient(ExchangeClientInterface):
 
     @property
     def _url(self) -> str:
-        return 'https://api.binance.com/rate'
+        return "https://api.binance.com/rate"
 
     def _send(self, query_params: dict = None) -> dict:
         response: Response = requests.get(self._url, params=query_params)
         return response.json()
 
     def get_coin_rate(self, coin_name: str, currency_name: str) -> Decimal:
-        response_body: dict = self._send({'coin_name': coin_name, 'currency_name': currency_name})
-        coin_rate: str = response_body['rate']
+        response_body: dict = self._send(
+            {"coin_name": coin_name, "currency_name": currency_name}
+        )
+        coin_rate: str = response_body["rate"]
         return Decimal(coin_rate)
 
 
@@ -62,15 +64,17 @@ class CoinbaseClient(ExchangeClientInterface):
 
     @property
     def _url(self) -> str:
-        return 'https://api.coinbase.com/get-rate'
+        return "https://api.coinbase.com/get-rate"
 
     def _send(self, query_params: dict = None) -> dict:
         response: Response = requests.get(self._url, params=query_params)
         return response.json()
 
     def get_coin_rate(self, coin_name: str, currency_name: str) -> Decimal:
-        response_body: dict = self._send({'coin_name': coin_name, 'currency_name': currency_name})
-        coin_rate: str = response_body['coin_rate']
+        response_body: dict = self._send(
+            {"coin_name": coin_name, "currency_name": currency_name}
+        )
+        coin_rate: str = response_body["coin_rate"]
         return Decimal(coin_rate)
 
 
@@ -81,13 +85,15 @@ class KrakenClient(ExchangeClientInterface):
 
     @property
     def _url(self) -> str:
-        return 'https://api.kraken.com/get-rate'
+        return "https://api.kraken.com/get-rate"
 
     def _send(self, query_params: dict = None) -> dict:
         response: Response = requests.get(self._url, params=query_params)
         return response.json()
 
     def get_coin_rate(self, coin_name: str, currency_name: str) -> Decimal:
-        response_body: dict = self._send({'coin_name': coin_name, 'currency_name': currency_name})
-        coin_rate: str = response_body['rate']
+        response_body: dict = self._send(
+            {"coin_name": coin_name, "currency_name": currency_name}
+        )
+        coin_rate: str = response_body["rate"]
         return Decimal(coin_rate)

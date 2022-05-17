@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 
-from creational.factories.factory_method.employees import EmployeeInterface, Programmer, Manager
+from creational.factories.factory_method.employees import (
+    EmployeeInterface,
+    Programmer,
+    Manager,
+)
 
 
 class BaseDepartament(ABC):
@@ -52,7 +56,9 @@ class EmployeeFactory:
     def register_department(self, name: str, department: BaseDepartament):
         self._departments[name] = department
 
-    def create_employee(self, departament_name: str, employee_name: str, employee_surname: str, **kwargs):
+    def create_employee(
+        self, departament_name: str, employee_name: str, employee_surname: str, **kwargs
+    ):
         departament: BaseDepartament = self._departments.get(departament_name)
         if not departament:
             raise ValueError(f"Unknown departament: {departament_name}")

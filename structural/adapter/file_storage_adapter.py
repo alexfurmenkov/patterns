@@ -13,7 +13,7 @@ class FileStorage:
     """
 
     def __init__(self):
-        self.__storage_url = 'https://test-storage.com'
+        self.__storage_url = "https://test-storage.com"
 
     def all_files(self) -> List[dict]:
         response: Response = requests.get(self.__storage_url)
@@ -33,7 +33,7 @@ class FileStorageAdapter(FileStorageClientInterface):
         return self._storage_obj.all_files()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # client code
 
     file_storage_obj: FileStorage = FileStorage()

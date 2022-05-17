@@ -100,8 +100,14 @@ if __name__ == "__main__":
     new_user = User(
         username="Aleksei",
         age=23,
-        posts=["post_id_1", "post_id_2", ],
-        friends=["friend_id_1", "friend_id_2", ]
+        posts=[
+            "post_id_1",
+            "post_id_2",
+        ],
+        friends=[
+            "friend_id_1",
+            "friend_id_2",
+        ],
     )
 
     normal_state = NormalUserState(new_user)

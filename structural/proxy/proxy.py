@@ -60,21 +60,21 @@ class ConcreteImageStock(ImageStockInterface):
     """
 
     def __init__(self):
-        self.__stock_url = 'https://concrete-stock.com'
+        self.__stock_url = "https://concrete-stock.com"
 
     def upload_image(self, image: bytes) -> str:
         response: Response = requests.post(url=self.__stock_url, data=image)
         response_body: dict = response.json()
-        image_id: str = response_body['image_id']
+        image_id: str = response_body["image_id"]
         return image_id
 
     def download_image(self, image_id: str) -> bytes:
-        response: Response = requests.get(url=f'{self.__stock_url}/{image_id}')
+        response: Response = requests.get(url=f"{self.__stock_url}/{image_id}")
         image: bytes = response.content
         return image
 
     def delete_image(self, image_id: str):
-        requests.delete(url=f'{self.__stock_url}/{image_id}')
+        requests.delete(url=f"{self.__stock_url}/{image_id}")
 
 
 class ImageStockPermissionProxy(ImageStockInterface):
@@ -99,16 +99,18 @@ class ImageStockPermissionProxy(ImageStockInterface):
     def delete_image(self, image_id: str):
         if self._user_has_access():
             return self._stock_obj.delete_image(image_id)
-        raise AccessDeniedException(f'User with username {self._user.username} cannot delete images!')
+        raise AccessDeniedException(
+            f"User with username {self._user.username} cannot delete images!"
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # client code
 
     image_stock_obj: ConcreteImageStock = ConcreteImageStock()
-    uploaded_image_id: str = image_stock_obj.upload_image('image'.encode('utf-8'))
+    uploaded_image_id: str = image_stock_obj.upload_image("image".encode("utf-8"))
 
-    user_without_access = User('username')
+    user_without_access = User("username")
     image_stock_proxy = ImageStockPermissionProxy(image_stock_obj, user_without_access)
     try:
         image_stock_proxy.delete_image(uploaded_image_id)

@@ -20,7 +20,9 @@ class PlayerType:
         return self._team
 
     def shoot(self, weapon: str, x_coord: float, y_coord: float):
-        print(f"Player [{self._team}] shooting from weapon {weapon}, target: ({x_coord}, {y_coord})")
+        print(
+            f"Player [{self._team}] shooting from weapon {weapon}, target: ({x_coord}, {y_coord})"
+        )
 
 
 class Player:
@@ -44,6 +46,7 @@ class PlayerFactory:
     In terms of memory efficiency, only one instance of
     PlayerType is created per type.
     """
+
     _existing_players = {}
 
     @classmethod

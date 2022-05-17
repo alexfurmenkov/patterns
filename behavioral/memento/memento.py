@@ -64,6 +64,7 @@ class UpdateBalanceCommand(BaseBalanceCommand):
     """
     Updates a balance.
     """
+
     def __init__(self, db_model: DBModelInterface, new_balance: float):
         super(UpdateBalanceCommand, self).__init__(db_model, new_balance)
         self._balance_before_update: Optional[MementoInterface] = None

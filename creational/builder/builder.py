@@ -110,7 +110,7 @@ class HouseBuilder(HouseBuilderInterface):
             self._has_pool,
             self._has_garage,
             self._has_gates,
-            self._roof_type
+            self._roof_type,
         )
 
 
@@ -146,7 +146,9 @@ class Director:
         self._builder_obj.set_floors(floors)
         return self._builder_obj.house
 
-    def build_expensive_house(self, walls: int, windows: int, floors: int, roof_type: str = None) -> House:
+    def build_expensive_house(
+        self, walls: int, windows: int, floors: int, roof_type: str = None
+    ) -> House:
         """
         Builds a fully featured house: pool, garage, gates.
         """

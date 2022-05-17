@@ -93,9 +93,8 @@ if __name__ == "__main__":
     auth_handler.set_next_handler(group_handler)
     group_handler.set_next_handler(payload_handler)
 
-    token: bytes = pickle.dumps({'name': 'Aleksei', 'group': ADMIN_GROUP_NAME})
+    token: bytes = pickle.dumps({"name": "Aleksei", "group": ADMIN_GROUP_NAME})
     request_to_validate = Request(
-        headers={"Authorization": token},
-        body={"name": "Aleksei"}
+        headers={"Authorization": token}, body={"name": "Aleksei"}
     )
     auth_handler.validate(request_to_validate)

@@ -101,10 +101,18 @@ class DBPostModel(BaseDBModel):
 
 if __name__ == "__main__":
     user_obj = DBUserModel(
-        {"id": str(uuid.uuid4()), "created_at": datetime.now().isoformat(), "username": "John"}
+        {
+            "id": str(uuid.uuid4()),
+            "created_at": datetime.now().isoformat(),
+            "username": "John",
+        }
     )
     post_obj = DBPostModel(
-        {"id": str(uuid.uuid4()), "created_at": datetime.now().isoformat(), "description": "Sports Event"}
+        {
+            "id": str(uuid.uuid4()),
+            "created_at": datetime.now().isoformat(),
+            "description": "Sports Event",
+        }
     )
 
     visitor_obj = SerializationVisitor()

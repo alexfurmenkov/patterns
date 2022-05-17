@@ -36,9 +36,12 @@ class JSONCoinRepresentation(BaseCoinRepresentation):
     """
     Displays coin rate in JSON
     """
+
     def display_coin_rate(self, coin_name: str, currency_name: str) -> str:
-        coin_rate: Decimal = self._exchange_client.get_coin_rate(coin_name, currency_name)
-        data: dict = {'coin_rate': coin_rate}
+        coin_rate: Decimal = self._exchange_client.get_coin_rate(
+            coin_name, currency_name
+        )
+        data: dict = {"coin_rate": coin_rate}
         return json.dumps(data)
 
 
@@ -46,7 +49,10 @@ class XMLCoinRepresentation(BaseCoinRepresentation):
     """
     Displays coin rate in XML
     """
+
     def display_coin_rate(self, coin_name: str, currency_name: str) -> str:
-        coin_rate: Decimal = self._exchange_client.get_coin_rate(coin_name, currency_name)
-        data: dict = {'coin_rate': coin_rate}
+        coin_rate: Decimal = self._exchange_client.get_coin_rate(
+            coin_name, currency_name
+        )
+        data: dict = {"coin_rate": coin_rate}
         return dicttoxml(data)

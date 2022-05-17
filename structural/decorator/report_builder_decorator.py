@@ -50,16 +50,16 @@ class ReportBuilder(ReportBuilderInterface):
         Protected method.
         :return: dict
         """
-        with open(f'./datasources/{self._datasource_id}.xml') as xml_file:
+        with open(f"./datasources/{self._datasource_id}.xml") as xml_file:
             file_contents: str = xml_file.read()
-            return dict(xmltodict.parse(file_contents)['root'])
+            return dict(xmltodict.parse(file_contents)["root"])
 
     def build_report(self) -> str:
         """
         Prepares data for report and builds a PDF report with this data.
         """
         report_data: dict = self._prepare_data_for_report()
-        return f'Creating a PDF report. File name - {self._file_name}.pdf, Report data - {report_data}'
+        return f"Creating a PDF report. File name - {self._file_name}.pdf, Report data - {report_data}"
 
 
 class ReportBuilderDecorator(ReportBuilderInterface):
@@ -82,7 +82,7 @@ class ReportBuilderDOCXDecorator(ReportBuilderDecorator):
     """
 
     def build_report(self) -> str:
-        return f'Creating a DOCX report.({self._report_builder.build_report()})'
+        return f"Creating a DOCX report.({self._report_builder.build_report()})"
 
 
 class ReportBuilderXLSXDecorator(ReportBuilderDecorator):
@@ -92,7 +92,7 @@ class ReportBuilderXLSXDecorator(ReportBuilderDecorator):
     """
 
     def build_report(self) -> str:
-        return f'Creating a XLSX report.({self._report_builder.build_report()})'
+        return f"Creating a XLSX report.({self._report_builder.build_report()})"
 
 
 class ReportBuilderHTMLDecorator(ReportBuilderDecorator):
@@ -102,12 +102,12 @@ class ReportBuilderHTMLDecorator(ReportBuilderDecorator):
     """
 
     def build_report(self) -> str:
-        return f'Creating a HTML report.({self._report_builder.build_report()})'
+        return f"Creating a HTML report.({self._report_builder.build_report()})"
 
 
-if __name__ == '__main__':
-    source_id: str = 'ccba9f1f-0d94-4905-aeeb-5f466a84e598'
-    rep_builder: ReportBuilder = ReportBuilder('decorator_example', source_id)
+if __name__ == "__main__":
+    source_id: str = "ccba9f1f-0d94-4905-aeeb-5f466a84e598"
+    rep_builder: ReportBuilder = ReportBuilder("decorator_example", source_id)
 
     # if you need to build PDF report only:
     pdf_only_report: str = rep_builder.build_report()
@@ -121,7 +121,9 @@ if __name__ == '__main__':
     # if you need to build all reports at the same time:
     docx_wrapped_rep_builder = ReportBuilderDOCXDecorator(rep_builder)
     html_docx_wrapped_rep_builder = ReportBuilderHTMLDecorator(docx_wrapped_rep_builder)
-    xlsx_html_docx_wrapped_rep_builder = ReportBuilderXLSXDecorator(html_docx_wrapped_rep_builder)
+    xlsx_html_docx_wrapped_rep_builder = ReportBuilderXLSXDecorator(
+        html_docx_wrapped_rep_builder
+    )
     multiple_reports: str = xlsx_html_docx_wrapped_rep_builder.build_report()
     print(multiple_reports)
 

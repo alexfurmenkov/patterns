@@ -50,6 +50,7 @@ class AssignCarrierToZoneCommand(BaseCarrierCommand):
     """
     Calls the microservice that assigns carriers to geographical zones.
     """
+
     def __init__(self, carrier: Carrier):
         super(AssignCarrierToZoneCommand, self).__init__(carrier)
         self._url: str = os.getenv("GEOGRAPHICAL_API_URL")

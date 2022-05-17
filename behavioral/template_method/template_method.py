@@ -22,6 +22,7 @@ class BaseReader(ReaderInterface, ABC):
     """
     Base reader that defines the common algorithm.
     """
+
     def __init__(self):
         self._df_to_return: pd.DataFrame = pd.DataFrame()
 
@@ -40,10 +41,14 @@ class BaseReader(ReaderInterface, ABC):
         """
 
     def _round_floats(self):
-        self._df_to_return = self._df_to_return.applymap(lambda x: round(x, 5) if isinstance(x, float) else x)
+        self._df_to_return = self._df_to_return.applymap(
+            lambda x: round(x, 5) if isinstance(x, float) else x
+        )
 
     def _rename_all_columns_to_uppercase(self):
-        self._df_to_return.columns = [column.upper() for column in self._df_to_return.columns]
+        self._df_to_return.columns = [
+            column.upper() for column in self._df_to_return.columns
+        ]
 
 
 class XPTReader(BaseReader):
@@ -52,11 +57,13 @@ class XPTReader(BaseReader):
     """
 
     def _read_data_from_bytes(self, data: bytes) -> pd.DataFrame:
-        return pd.read_sas(BytesIO(data), format="xport", encoding='utf-8')
+        return pd.read_sas(BytesIO(data), format="xport", encoding="utf-8")
 
     def _round_floats(self):
         # we need 15 digits in xpt files
-        self._df_to_return = self._df_to_return.applymap(lambda x: round(x, 15) if isinstance(x, float) else x)
+        self._df_to_return = self._df_to_return.applymap(
+            lambda x: round(x, 15) if isinstance(x, float) else x
+        )
 
 
 class ExcelReader(BaseReader):

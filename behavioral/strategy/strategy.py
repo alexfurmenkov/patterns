@@ -32,7 +32,7 @@ class DatasetContentsStrategy(DataExtractingStrategyInterface):
 
     def extract(self, file_contents: bytes) -> pd.DataFrame:
         # we expect .xpt files in the example
-        return pd.read_sas(BytesIO(file_contents), format="xport", encoding='utf-8')
+        return pd.read_sas(BytesIO(file_contents), format="xport", encoding="utf-8")
 
 
 class DatasetMetadataStrategy(DataExtractingStrategyInterface):

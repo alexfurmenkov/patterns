@@ -8,6 +8,7 @@ class DBClient:
     """
     A singleton DB client.
     """
+
     _instance = None
 
     def __init__(self):
@@ -36,10 +37,12 @@ class DBClient:
         response: Response = requests.post(
             url=self._db_endpoint,
             json=request_body,
-            auth=(self._db_username, self._db_password)
+            auth=(self._db_username, self._db_password),
         )
         response_body: dict = response.json()
-        print(f"Response status: {response.status_code}, Response body: {response_body}")
+        print(
+            f"Response status: {response.status_code}, Response body: {response_body}"
+        )
         return response_body
 
 

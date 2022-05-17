@@ -49,7 +49,7 @@ class RedisCachingService(CachingServiceInterface):
         self._redis_client = RedisClient(
             host=config["REDIS_HOST"],
             port=config["REDIS_PORT"],
-            access_key=config["REDIS_ACCESS_KEY"]
+            access_key=config["REDIS_ACCESS_KEY"],
         )
 
     def get(self, cache_key: str) -> Optional[Any]:

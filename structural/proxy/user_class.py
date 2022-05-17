@@ -1,7 +1,7 @@
 import secrets
 
 
-ADMIN_ROLE_NAME: str = 'admin'
+ADMIN_ROLE_NAME: str = "admin"
 
 
 class User:

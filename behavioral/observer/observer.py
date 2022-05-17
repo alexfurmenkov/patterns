@@ -22,7 +22,9 @@ class LongTermInvestor(SubscriberInterface):
     """
 
     def notify(self, ticker: str, price: float):
-        print(f"I am not afraid that ticker {ticker} price changed to {price}. I am a long term investor.")
+        print(
+            f"I am not afraid that ticker {ticker} price changed to {price}. I am a long term investor."
+        )
 
 
 class BeginnerInvestor(SubscriberInterface):
@@ -31,7 +33,9 @@ class BeginnerInvestor(SubscriberInterface):
     """
 
     def notify(self, ticker: str, price: float):
-        print(f"Panic. Price of {ticker} ticker changed to {price}. What should I do? Sell?")
+        print(
+            f"Panic. Price of {ticker} ticker changed to {price}. What should I do? Sell?"
+        )
 
 
 class Exchange:

@@ -16,7 +16,6 @@ class EmployeeInterface(ABC):
 
 
 class Employee(EmployeeInterface):
-
     def __init__(self, name: str, job: str, salary: int):
         self.name = name
         self.job = job
@@ -27,7 +26,6 @@ class Employee(EmployeeInterface):
 
 
 class Manager(EmployeeInterface):
-
     def __init__(self, name: str, job: str, salary: int):
         self.name = name
         self.job = job
