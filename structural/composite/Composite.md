@@ -3,7 +3,8 @@
 ### When to use the pattern?
 Composite pattern is useful when a group of different objects should be treated uniformly.
 Say, when you need to do the same operation for each object in a group, and you don't want to distinguish their types,
-you just need to call the same method for each object.
+you just need to call the same method for each object. When you are handling nested objects and do not know in advance 
+if an object is nested or no.
 
 ### Example
 The easiest and most explicit example would be a company with an employee hierarchy.
